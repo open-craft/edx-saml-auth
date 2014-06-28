@@ -11,7 +11,7 @@ class PingOneBackend(backend.SAMLBaseAuth):
 
 
 class PingOneProvider(BaseProvider):
-    BACKEND_CLASS = backend.SAMLBaseAuth
+    BACKEND_CLASS = PingOneBackend
     ICON_CLASS = 'icon-signin'
     NAME = 'PingOne'
 
