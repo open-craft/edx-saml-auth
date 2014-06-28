@@ -20,10 +20,12 @@ class SAMLBaseAuth(BaseAuth):
         return url
 
     def get_user_details(self, response):
+        details = {'name_id': self.saml_response.name_id}
+
         attributes = self.setting('EXTRA_ATTRIBUTES')
-        details = {}
         for name, attr in attributes:
             details[name] = (self.saml_response.get_assertion_attribute_value(attr) or [None])[0]
+
         return details
 
     def get_user_id(self, details, response):
