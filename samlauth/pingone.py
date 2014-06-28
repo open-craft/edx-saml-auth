@@ -26,8 +26,8 @@ class PingOneProvider(BaseProvider):
 
     @classmethod
     def get_email(cls, provider_details):
-        return provider_details('email')
+        return provider_details.get('email')
 
     @classmethod
     def get_name(cls, provider_details):
-        return provider_details('fullname')
+        return provider_details.get('fullname')
