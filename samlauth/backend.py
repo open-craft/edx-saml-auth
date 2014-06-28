@@ -13,7 +13,7 @@ class SAMLBaseAuth(BaseAuth):
     def auth_url(self):
         url = saml.AuthRequest.create(
             assertion_consumer_service_url=self.setting('ASSERTION_CONSUMER_SERVICE_URL'),
-            issuer=self.setting('ISSUER')
+            issuer=self.setting('ISSUER'),
             name_identifier_format=self.setting('NAME_IDENTIFIER_FORMAT'),
             idp_sso_target_url=self.setting('IDP_SSO_TARGET_URL')
         )
