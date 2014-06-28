@@ -35,11 +35,13 @@ class SAMLBaseAuth(BaseAuth):
         uri = urlparse(self.strategy.build_absolute_uri())
         request_info = {
             'server_name': uri.hostname,
-            'server_port': uri.port,
             'path_info': uri.path,
             'https': 'on' if uri.scheme == 'https' else 'off',
             'script_name': '',
         }
+        if uri.port:
+            request_info['server_port'] = uri.port
+
         response = self.strategy.request_data()
 
         self.saml_response = saml.Response(
